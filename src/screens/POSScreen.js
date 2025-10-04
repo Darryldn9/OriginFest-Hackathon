@@ -71,7 +71,7 @@ export default function POSScreen({ navigation }) {
     </TouchableOpacity>
   );
 
-  const PaymentMethodCard = ({ icon, title, onPress, selected }) => (
+  const PaymentMethodCard = ({ icon, title, onPress, selected, fee }) => (
     <TouchableOpacity
       style={[styles.paymentCard, selected && styles.paymentCardSelected]}
       onPress={onPress}
@@ -80,9 +80,14 @@ export default function POSScreen({ navigation }) {
       <View style={[styles.paymentIcon, selected && styles.paymentIconSelected]}>
         <Ionicons name={icon} size={32} color={selected ? COLORS.white : COLORS.green} />
       </View>
-      <Text style={[styles.paymentTitle, selected && styles.paymentTitleSelected]}>
-        {title}
-      </Text>
+      <View style={styles.paymentInfo}>
+        <Text style={[styles.paymentTitle, selected && styles.paymentTitleSelected]}>
+          {title}
+        </Text>
+        {fee && (
+          <Text style={styles.paymentFee}>{fee}</Text>
+        )}
+      </View>
       {selected && (
         <View style={styles.selectedBadge}>
           <Ionicons name="checkmark-circle" size={24} color={COLORS.green} />
@@ -174,18 +179,21 @@ export default function POSScreen({ navigation }) {
             <PaymentMethodCard
               icon="card"
               title="Card"
+              fee="3.5% fee"
               selected={selectedPayment === 'card'}
               onPress={() => handlePaymentMethod('card')}
             />
             <PaymentMethodCard
               icon="wallet"
               title="Direla"
+              fee="0.8% fee"
               selected={selectedPayment === 'direla'}
               onPress={() => handlePaymentMethod('direla')}
             />
             <PaymentMethodCard
               icon="phone-portrait"
               title="Mobile Money"
+              fee="1.5% fee"
               selected={selectedPayment === 'mobile'}
               onPress={() => handlePaymentMethod('mobile')}
             />
@@ -419,15 +427,22 @@ const styles = StyleSheet.create({
   paymentIconSelected: {
     backgroundColor: COLORS.green,
   },
+  paymentInfo: {
+    flex: 1,
+  },
   paymentTitle: {
     fontSize: 15,
     fontWeight: '600',
     color: COLORS.darkGrey,
-    flex: 1,
   },
   paymentTitleSelected: {
     color: COLORS.green,
     fontWeight: 'bold',
+  },
+  paymentFee: {
+    fontSize: 12,
+    color: COLORS.textLight,
+    marginTop: 2,
   },
   selectedBadge: {
     marginLeft: 8,

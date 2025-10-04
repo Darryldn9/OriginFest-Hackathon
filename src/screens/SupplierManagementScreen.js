@@ -15,7 +15,7 @@ export default function SupplierManagementScreen({ navigation }) {
       creditLimit: 50000,
       currentCredit: 12500,
       status: 'active',
-      contact: '+1234567890',
+      contact: '+27 82 345 6789',
     },
     {
       id: '2',
@@ -26,7 +26,7 @@ export default function SupplierManagementScreen({ navigation }) {
       creditLimit: 30000,
       currentCredit: 8200,
       status: 'active',
-      contact: '+1234567891',
+      contact: '+27 71 456 7890',
     },
     {
       id: '3',
@@ -37,7 +37,7 @@ export default function SupplierManagementScreen({ navigation }) {
       creditLimit: 75000,
       currentCredit: 25000,
       status: 'active',
-      contact: '+1234567892',
+      contact: '+27 83 567 8901',
     },
   ]);
 
@@ -147,7 +147,7 @@ export default function SupplierManagementScreen({ navigation }) {
             <Text style={styles.miniStatLabel}>Total Orders</Text>
           </View>
           <View style={styles.miniStat}>
-            <Text style={styles.miniStatValue}>
+            <Text style={styles.miniStatValue} numberOfLines={1} adjustsFontSizeToFit>
               {formatCurrency(suppliers.reduce((sum, s) => sum + s.currentCredit, 0))}
             </Text>
             <Text style={styles.miniStatLabel}>Active Credit</Text>
@@ -239,9 +239,11 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   miniStatValue: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: COLORS.green,
+    textAlign: 'center',
+    numberOfLines: 1,
   },
   miniStatLabel: {
     fontSize: 11,

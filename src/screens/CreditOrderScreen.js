@@ -198,7 +198,7 @@ export default function CreditOrderScreen({ route, navigation }) {
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Order Amount</Text>
             <Text style={styles.summaryValue}>
-              ${orderAmount || '0.00'}
+              {formatCurrency(parseFloat(orderAmount || 0))}
             </Text>
           </View>
           <View style={styles.summaryRow}>
@@ -211,7 +211,7 @@ export default function CreditOrderScreen({ route, navigation }) {
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabelTotal}>Total Credit Order</Text>
             <Text style={styles.summaryValueTotal}>
-              ${orderAmount || '0.00'}
+              {formatCurrency(parseFloat(orderAmount || 0))}
             </Text>
           </View>
         </View>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS, formatCurrency } from '../theme/colors';
 
 export default function OrderConfirmationScreen({ route, navigation }) {
   const { supplier, amount, deliveryDate, notes, items } = route.params;
@@ -42,13 +42,11 @@ export default function OrderConfirmationScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={
-          status === 'confirmed' 
-            ? ['#4CAF50', '#45a049'] 
-            : ['#0088cc', '#005599']
-        }
-        style={styles.header}
+      <View
+        style={[
+          styles.header,
+          { backgroundColor: status === 'confirmed' ? COLORS.green : COLORS.green }
+        ]}
       >
         <Animated.View style={[styles.iconContainer, { transform: [{ scale: scaleAnim }] }]}>
           {status === 'sending' && (
@@ -72,7 +70,7 @@ export default function OrderConfirmationScreen({ route, navigation }) {
           {status === 'sent' && 'Awaiting supplier confirmation...'}
           {status === 'confirmed' && 'Supplier has confirmed your order'}
         </Text>
-      </LinearGradient>
+      </View>
 
       <View style={styles.content}>
         {/* Supplier Info */}
@@ -80,7 +78,7 @@ export default function OrderConfirmationScreen({ route, navigation }) {
           <Text style={styles.cardTitle}>Supplier</Text>
           <View style={styles.supplierRow}>
             <View style={styles.supplierIcon}>
-              <Ionicons name="business" size={24} color="#0088cc" />
+              <Ionicons name="business" size={24} color={COLORS.green} />
             </View>
             <View style={styles.supplierInfo}>
               <Text style={styles.supplierName}>{supplier.name}</Text>
@@ -174,7 +172,7 @@ export default function OrderConfirmationScreen({ route, navigation }) {
         {/* Credit Impact */}
         <View style={styles.impactCard}>
           <View style={styles.impactHeader}>
-            <Ionicons name="information-circle" size={24} color="#0088cc" />
+            <Ionicons name="information-circle" size={24} color={COLORS.green} />
             <Text style={styles.impactTitle}>Credit Impact</Text>
           </View>
           <Text style={styles.impactText}>
@@ -316,7 +314,7 @@ const styles = StyleSheet.create({
   detailAmount: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#0088cc',
+    color: COLORS.green,
   },
   divider: {
     height: 1,
@@ -386,7 +384,7 @@ const styles = StyleSheet.create({
   impactTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#0088cc',
+    color: COLORS.green,
   },
   impactText: {
     fontSize: 14,

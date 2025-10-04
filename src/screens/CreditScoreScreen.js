@@ -61,9 +61,8 @@ export default function CreditScoreScreen() {
   return (
     <ScrollView style={styles.container}>
       {/* Credit Score Header */}
-      <LinearGradient
-        colors={[scoreLevel.color, scoreLevel.color + 'dd']}
-        style={styles.header}
+      <View
+        style={[styles.header, { backgroundColor: scoreLevel.color }]}
       >
         <Text style={styles.headerTitle}>Your Credit Score</Text>
         <View style={styles.scoreContainer}>
@@ -75,7 +74,7 @@ export default function CreditScoreScreen() {
         <View style={styles.progressBar}>
           <View style={[styles.progressFill, { width: `${(creditScore / 850) * 100}%` }]} />
         </View>
-      </LinearGradient>
+      </View>
 
       {/* Score Trend */}
       <View style={styles.section}>
