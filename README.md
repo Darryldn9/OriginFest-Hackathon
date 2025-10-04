@@ -1,4 +1,4 @@
-# Telegram POS - Business Management System
+# Mobile POS - Business Management System
 
 A comprehensive mobile application for iOS and Android built with Expo that integrates Mobile POS, credit ordering, and supplier management with Telegram AI Business Manager.
 
