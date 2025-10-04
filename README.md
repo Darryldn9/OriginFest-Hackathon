@@ -269,4 +269,4 @@ For support and questions:
 
 ---
 
-**Built with ❤️ for EDHE Hackathon 2024**
+**Built with ❤️ for EDHE Hackathon 2025**
